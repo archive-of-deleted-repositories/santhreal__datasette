@@ -30,6 +30,9 @@
     {% if can_publish %}
         <p><label><input type="checkbox" name="published" value="1"> Published</label></p>
     {% endif %}
+    {% if sql and analysis_is_write %}
+        <p><a href="{{ urls.database(database) }}/-/execute-write?{{ {'sql': sql}|urlencode|safe }}">Execute write SQL</a></p>
+    {% endif %}
 
     <h2>Analysis</h2>
     {% if analysis_error %}
